@@ -1,0 +1,158 @@
+#pikachufeed {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.feed {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 80px 20px 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    background: #f8f9fa;
+
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 100%;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.content {
+    text-align: center;
+}
+
+.card video, .card img {
+    flex-shrink: 0;
+    width: 320px;
+    max-width: 45%;
+    height: auto;
+}
+
+.card video.large-landscape {
+    width: 420px;
+    max-width: 60%;
+}
+
+.card.roomy-card {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.card.roomy-card video.large-landscape {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.card .content {
+    flex: 1;
+}
+
+.card h2 {
+    margin: 0 0 8px;
+    font-size: 1em;
+
+    font-family: "cc-pixel-arcade-display", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    color: black;
+}
+
+.card p {
+    margin: 0;
+    font-size: 0.9em;
+    font-family: "avenir-lt-pro", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 {
+    position: fixed;
+    text-align: left;
+    font-size: 45px;
+    font-family: "rixvideogame-pro", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    color: #ffd700;
+    -webkit-text-stroke: 2px #0066cc;
+}
+
+body {
+    background-image: url(../img/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.side-card {
+    position: fixed;
+    top: 140px;
+    width: 220px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.side-card-left {
+    left: 24px;
+    top: 300px;
+    width: 320px;
+}
+
+.side-card-right {
+    right: 24px;
+    top: 300px;
+}
+
+.side-card-right h2 {
+    font-family: "cc-pixel-arcade-display", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    color: #ffd700;
+    -webkit-text-stroke: 2px #0066cc;
+}
+
+.side-card-right p {
+    font-family: "cc-pixel-arcade-display", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    color: black;
+}
+
+.side-card p {
+    margin: 0;
+}
+
+.side-card img {
+    display: block;
+    margin: 0 auto 10px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#rotate {
+    transform: rotate(-90deg), translateX(-8px);
+}
+
+@media (max-width: 1200px) {
+    .side-card {
+        display: none;
+    }
+}

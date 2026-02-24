@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home Page</title>
+        <link rel="stylesheet" href="css/style.css">
+
+        <script>
+            (function(d) {
+              var config = {
+                kitId: 'zqe4kkq',
+                scriptTimeout: 3000,
+                async: true
+              },
+              h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+            })(document);
+          </script>
+    </head>
+    <body>
+        <audio autoplay loop>
+            <source src="img/pokemon.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+        <h2> Let's help Pikachu find out what's going down at the feed! </h2>
+        <nav>
+            <p>
+                <a href="thefeed/thefeed.html" class="pikachu-container">
+                    <div class="arrow"> ⬇ click me!! ⬇ </div>
+                    <img src="img/pikachurun.gif" id="pikachuindex" width="400" alt="Enter the web"/>
+                </a>
+
+                <img src="">
+            </p>
+        </nav>
+    </body>
+</html>
