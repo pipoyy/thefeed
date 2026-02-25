@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const qs = (selector) => document.querySelector(selector);
 
-  const background = qs(".background-img");
   const heading = qs("h1, h2");
   const logo = qs(".logo");
   const tapIndicator = qs(".arrow");
   const music = qs("#bgMusic");
   const musicCueBtn = qs("#musicCueBtn");
 
-  const introElements = [background, heading, logo, tapIndicator].filter(Boolean);
+  const introElements = [heading, logo, tapIndicator].filter(Boolean);
   const mainIntroElements = [heading, logo, tapIndicator].filter(Boolean);
 
   const stageElement = (element, yOffset = 30) => {
@@ -28,15 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   introElements.forEach((element) => stageElement(element));
 
-  if (background) {
-    setTimeout(() => {
-      revealElement(background, 1200);
-    }, 300);
-  }
-
   setTimeout(() => {
     mainIntroElements.forEach((element) => revealElement(element, 1200));
-  }, 800);
+  }, 700);
 
   if (!music || !musicCueBtn) return;
 
