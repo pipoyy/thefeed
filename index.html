@@ -18,21 +18,27 @@
           </script>
     </head>
     <body>
-        <audio autoplay loop>
+        <audio id="bgMusic" autoplay loop>
             <source src="img/pokemon.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
+        <button id="musicCueBtn" class="music-cue-btn" type="button">Start Music</button>
 
         <h2> Let's help Pikachu find out what's going down at the feed! </h2>
+        <img src="img/pikachus.png" class="left-pikachus" alt="">
+        <img src="img/pikachus2.png" class="right-pikachus" alt="">
         <nav>
             <p>
-                <a href="thefeed/thefeed.html" class="pikachu-container">
-                    <div class="arrow"> ⬇ click me!! ⬇ </div>
-                    <img src="img/pikachurun.gif" id="pikachuindex" width="400" alt="Enter the web"/>
-                </a>
-
-                <img src="">
+                <div class="pikachu-wrap">
+                    <div class="arrow"> 
+                        <img src="img/tapme.gif" alt="">
+                    </div>
+                    <a href="thefeed/thefeed.html" class="pikachu-container">
+                        <img src="img/pikachurun.gif" id="pikachuindex" class="logo" width="400" alt="Enter the web"/>
+                    </a>
+                </div>
             </p>
         </nav>
+        <script src="js/script.js" defer></script>
     </body>
 </html>

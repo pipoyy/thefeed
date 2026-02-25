@@ -1,24 +1,66 @@
-.pikachu-container {
+.pikachu-wrap {
+    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-top: 220px;
+}
+
+.pikachu-container {
+    display: block;
     text-decoration: none;
     padding: 12px;
 }
 
-.arrow {
-
-    font-size: 24px;
-    margin-bottom: 4px;
-    animation: bounce 1s infinite;
-    color: #fdbb2a; 
-    font-weight: bold;
+nav {
+    display: flex;
+    justify-content: center;
 }
 
-@keyframes bounce {
-    0%, 100% {transform: translateY(0); }
-    50% {transform: translateY(8px); }
-  } 
+nav p {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.arrow {
+    position: absolute;
+    top: -18%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    animation: arrow-bounce 1s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.arrow::after {
+    content: "↓";
+    font-size: 88px;
+    line-height: 1;
+    color: #fdbb2a;
+    -webkit-text-stroke: 2px #a85b00;
+    text-shadow: 0 0 6px rgba(253, 187, 42, 0.55);
+}
+
+.arrow img {
+    display: block;
+    width: 300px;
+    height: auto;
+}
+
+@keyframes arrow-bounce {
+    0%, 100% {
+        transform: translate(-50%, -50%) translateY(0);
+    }
+    50% {
+        transform: translate(-50%, -50%) translateY(14px);
+    }
+}
 
 #pikachuindex {
     bottom: 0;
@@ -27,18 +69,39 @@
     transition: transform 0.3s ease;
     transform-origin: center;
     display: block;
+    animation: cta-glow 2s ease-in-out infinite;
 }
 
 #pikachuindex:hover {
-    transform: scale(1.15);
+    animation: pikachu-wiggle 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes cta-glow {
+    0%, 100% {
+        filter: drop-shadow(0 0 0 rgba(255, 213, 0, 0));
+    }
+    50% {
+        filter: drop-shadow(0 0 12px rgba(255, 213, 0, 0.75));
+    }
+}
+
+@keyframes pikachu-wiggle {
+    0% {
+        transform: scale(1.12) rotate(-2deg);
+    }
+    100% {
+        transform: scale(1.16) rotate(2deg);
+    }
 }
 
 h2 {
-    margin-top: 100px;
+    margin: 100px auto 0;
     padding: 10px 16px;
     border-radius: 8px;
 
-    display: inline-block;
+    display: block;
+    width: fit-content;
+    text-align: center;
     background-color: rgba(255, 255, 255, 0.9);
     font-size: 45px;
     font-family: "rixvideogame-pro", sans-serif;
@@ -49,9 +112,64 @@ h2 {
     -webkit-text-stroke: 2px #0066cc;
 }
 
+.left-pikachus {
+    position: fixed;
+    left: 100px;
+    top: 64%;
+    transform: translateY(-50%);
+    width: 320px;
+    height: auto;
+    filter: brightness(1.2) contrast(1.1) saturate(1.1);
+    z-index: 1;
+    pointer-events: auto;
+}
+
+.right-pikachus {
+    position: fixed;
+    right: 100px;
+    top: 64%;
+    transform: translateY(-50%);
+    width: 420px;
+    height: auto;
+    filter: brightness(1.2) contrast(1.1) saturate(1.1);
+    z-index: 1;
+    pointer-events: auto;
+}
+
+.music-cue-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid #a85b00;
+    border-radius: 999px;
+    padding: 12px 18px;
+    background: #fdbb2a;
+    color: #241400;
+    font-family: "cc-pixel-arcade-display", sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity 0.28s ease, transform 0.28s ease;
+    z-index: 20;
+}
+
+.music-cue-btn.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.music-cue-btn.is-active {
+    background: #ffd770;
+}
+
 html, body {
     margin: 0;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 body {
@@ -61,4 +179,3 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
-

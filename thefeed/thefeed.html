@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>My Feed</title>
         <link rel="stylesheet" href="css/style.css">
 
@@ -31,24 +31,26 @@
     </head>
 
     <body>
-        <h1>Welcome to the feed!</h1>
+        <h1>Back to home!</h1>
 
         <nav>
             <p>
                 <a href="../index.html">
-                    <img src="img/pikachurun.gif" id="pikachufeed" width="300" alt="Enter the web"/>
+                    <img src="img/pikachuwave.gif" id="pikachufeed" class="logo" alt="Enter the web"/>
                 </a>
             </p>
         </nav>
 
         <aside class="side-card side-card-left">
-            <img src="img/gabe.jpg" width="300" alt=""/>
-        </aside>
-
-        <aside class="side-card side-card-right">
             <h2>Welcome!</h2>
             <p>This is the feed where you will see a daily dose into my digital life.</p>
             <p>I hope you like it!</p>
+            <img src="img/pikachufloat.gif" class="topcorner1" alt="">
+        </aside>
+
+        <aside class="side-card side-card-right">
+            <img src="img/gabe.jpg" width="300" alt=""/>
+            <img src="img/game.png" class="topcorner2" alt="">
         </aside>
 
         <div class="feed">
@@ -74,7 +76,8 @@
             </div>
         </article>
 
-        <article class="card">
+        <article class="card card-bereal">
+            <img src="./img/pikadance.gif" class="card-corner-gif" alt="">
             <video controls autoplay loop muted playsinline width="300" alt="">
                 <source src="./img/bereal_vid1.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
@@ -128,8 +131,10 @@
             </div>
         </article>
 
-        <article class="card">
-            <img src="./img/bereal_pic1.JPG" id="rotate" width="300" alt="bereal pt.2"/>
+        <article class="card roomy-card">
+            <div class="rotate-frame">
+                <img src="./img/bereal_pic1.JPG" id="rotate" width="300" alt="bereal pt.2"/>
+            </div>
             <div class="content">
                 <h2>bereal pt.2</h2>
             </div>
@@ -167,5 +172,6 @@
             </div>
         </article>
         </div>
+        <script src="js/script.js" defer></script>
     </body>
 </html>

@@ -2,6 +2,21 @@
     position: fixed;
     top: 0;
     left: 0;
+    transition: transform 0.3s ease;
+    transform-origin: center;
+}
+
+#pikachufeed:hover {
+    animation: pikachu-feed-wiggle 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes pikachu-feed-wiggle {
+    0% {
+        transform: scale(1.12) rotate(-2deg);
+    }
+    100% {
+        transform: scale(1.16) rotate(2deg);
+    }
 }
 
 .feed {
@@ -25,6 +40,28 @@
     max-width: 100%;
     align-items: center;
     margin-bottom: 50px;
+    position: relative;
+    transition: transform 0.24s ease, box-shadow 0.24s ease;
+    will-change: transform;
+}
+
+.card.is-hidden {
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+.card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out, box-shadow 0.24s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+        z-index: 5;
+    }
 }
 
 .content {
@@ -48,11 +85,38 @@
     align-items: stretch;
 }
 
+.card-bereal {
+    position: relative;
+    overflow: visible;
+}
+
+.card-bereal .card-corner-gif {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    max-width: none !important;
+    min-width: 0;
+    flex-shrink: 0;
+    height: auto;
+    margin: 0;
+    display: block;
+    transform: translate(28%, -28%);
+    z-index: 3;
+    pointer-events: none;
+}
+
 .card.roomy-card video.large-landscape {
     width: 100%;
     max-width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
+}
+
+.card.roomy-card img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
 .card .content {
@@ -96,29 +160,65 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    cursor: url(../img/wii.cur);
 }
 .side-card {
     position: fixed;
     top: 140px;
     width: 220px;
     background: #f8f9fa;
+    border: 1px solid black;
     border-radius: 12px;
     padding: 16px;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.side-card-right {
+    right: 24px;
+    top: 300px;
+    width: 320px;
+}
+
+.side-card-right .topcorner2 {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 80px;
+    height: auto;
+    margin: 0;
+    z-index: 2;
 }
 
 .side-card-left {
     left: 24px;
     top: 300px;
     width: 320px;
+    height: 420px;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
 }
 
-.side-card-right {
-    right: 24px;
-    top: 300px;
+.side-card-left img:first-child {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0;
 }
 
-.side-card-right h2 {
+.side-card-left .topcorner1 {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 80px;
+    height: auto;
+    margin: 0;
+    z-index: 2;
+}
+
+.side-card h2 {
+    margin: 0 0 10px;
     font-family: "cc-pixel-arcade-display", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -127,7 +227,8 @@ body {
     -webkit-text-stroke: 2px #0066cc;
 }
 
-.side-card-right p {
+.side-card p {
+    margin: 0 0 10px;
     font-family: "cc-pixel-arcade-display", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -135,8 +236,8 @@ body {
     color: black;
 }
 
-.side-card p {
-    margin: 0;
+.side-card p:last-child {
+    margin-bottom: 0;
 }
 
 .side-card img {
@@ -148,7 +249,22 @@ body {
 }
 
 #rotate {
-    transform: rotate(-90deg), translateX(-8px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: 150%;
+    max-width: none;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    transform-origin: center;
+}
+
+.rotate-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 8px;
 }
 
 @media (max-width: 1200px) {
