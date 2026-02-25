@@ -53,6 +53,33 @@ nav p {
     height: auto;
 }
 
+.cursor-burst {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    margin-left: -9px;
+    margin-top: -9px;
+    border-radius: 50%;
+    border: 2px solid #ffd700;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+    pointer-events: none;
+    z-index: 9999;
+    animation: cursor-burst-pop 0.55s ease-out forwards;
+}
+
+@keyframes cursor-burst-pop {
+    0% {
+        opacity: 1;
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(3);
+    }
+}
+
 @keyframes arrow-bounce {
     0%, 100% {
         transform: translate(-50%, -50%) translateY(0);
@@ -76,6 +103,22 @@ nav p {
     animation: pikachu-wiggle 0.45s ease-in-out infinite alternate;
 }
 
+body.is-pikachu-exit #pikachuindex {
+    animation: pikachu-run-right 4.6s cubic-bezier(0.25, 0.7, 0.2, 1) forwards;
+}
+
+body.is-pikachu-exit .arrow {
+    opacity: 0;
+    filter: blur(3px) saturate(0.7) brightness(0.85);
+    transition: opacity 0.85s ease-out, filter 0.85s ease-out;
+}
+
+body.is-pikachu-exit .music-cue-btn {
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+}
+
 @keyframes cta-glow {
     0%, 100% {
         filter: drop-shadow(0 0 0 rgba(255, 213, 0, 0));
@@ -91,6 +134,15 @@ nav p {
     }
     100% {
         transform: scale(1.16) rotate(2deg);
+    }
+}
+
+@keyframes pikachu-run-right {
+    0% {
+        transform: translateX(0) scale(1);
+    }
+    100% {
+        transform: translateX(120vw) scale(1.02);
     }
 }
 
