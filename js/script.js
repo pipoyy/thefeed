@@ -1,60 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const background = document.querySelector(".background-img");
-  const heading = document.querySelector("h1, h2");
-  const logo = document.querySelector(".logo");
-  const tapIndicator = document.querySelector(".arrow");
-  const music = document.querySelector("#bgMusic");
-  const musicCueBtn = document.querySelector("#musicCueBtn");
+  const qs = (selector) => document.querySelector(selector);
 
-  const stagedElements = [background, heading, logo, tapIndicator].filter(Boolean);
+  const background = qs(".background-img");
+  const heading = qs("h1, h2");
+  const logo = qs(".logo");
+  const tapIndicator = qs(".arrow");
+  const music = qs("#bgMusic");
+  const musicCueBtn = qs("#musicCueBtn");
 
-  stagedElements.forEach((element) => {
+  const introElements = [background, heading, logo, tapIndicator].filter(Boolean);
+  const mainIntroElements = [heading, logo, tapIndicator].filter(Boolean);
+
+  const stageElement = (element, yOffset = 30) => {
     element.style.opacity = "0";
-    element.style.transform = "translateY(30px)";
-  });
+    element.style.transform = `translateY(${yOffset}px)`;
+  };
+
+  const revealElement = (element, durationMs = 1200) => {
+    element.style.transition = `opacity ${durationMs}ms ease-out, transform ${durationMs}ms ease-out`;
+    element.style.opacity = "1";
+    element.style.transform = "translateY(0)";
+
+    setTimeout(() => {
+      element.style.removeProperty("transform");
+    }, durationMs);
+  };
+
+  introElements.forEach((element) => stageElement(element));
 
   if (background) {
     setTimeout(() => {
-      background.style.transition = "opacity 1.2s ease-out";
-      background.style.opacity = "1";
-      background.style.transform = "translateY(0)";
+      revealElement(background, 1200);
     }, 300);
   }
 
   setTimeout(() => {
-    [heading, logo, tapIndicator].filter(Boolean).forEach((element) => {
-      element.style.transition = "opacity 1.2s ease-out, transform 1.2s ease-out";
-      element.style.opacity = "1";
-      element.style.transform = "translateY(0)";
-      setTimeout(() => {
-        element.style.removeProperty("transform");
-      }, 1200);
-    });
+    mainIntroElements.forEach((element) => revealElement(element, 1200));
   }, 800);
 
-  if (music && musicCueBtn) {
-    const setMusicButtonState = (isPlaying) => {
-      musicCueBtn.textContent = isPlaying ? "Music: On" : "Music: Off";
-      musicCueBtn.classList.toggle("is-active", isPlaying);
-    };
+  if (!music || !musicCueBtn) return;
 
-    setTimeout(() => {
-      musicCueBtn.classList.add("is-visible");
-      setMusicButtonState(!music.paused);
-    }, 700);
+  const setMusicButtonState = (isPlaying) => {
+    musicCueBtn.textContent = isPlaying ? "Music: On" : "Music: Off";
+    musicCueBtn.classList.toggle("is-active", isPlaying);
+  };
 
-    musicCueBtn.addEventListener("click", async () => {
-      try {
-        if (music.paused) {
-          await music.play();
-          setMusicButtonState(true);
-        } else {
-          music.pause();
-          setMusicButtonState(false);
-        }
-      } catch (error) {
-        setMusicButtonState(false);
+  setTimeout(() => {
+    musicCueBtn.classList.add("is-visible");
+    setMusicButtonState(!music.paused);
+  }, 700);
+
+  musicCueBtn.addEventListener("click", async () => {
+    try {
+      if (music.paused) {
+        await music.play();
+      } else {
+        music.pause();
       }
-    });
-  }
+      setMusicButtonState(!music.paused);
+    } catch (error) {
+      setMusicButtonState(false);
+    }
+  });
 });

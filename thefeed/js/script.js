@@ -1,52 +1,60 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const staticElements = [
-    document.querySelector("h1"),
-    document.querySelector("nav"),
-    document.querySelector(".side-card-left"),
-    document.querySelector(".side-card-right"),
-  ].filter(Boolean);
-  const cards = Array.from(document.querySelectorAll(".feed .card"));
+  const qs = (selector) => document.querySelector(selector);
+  const qsa = (selector) => Array.from(document.querySelectorAll(selector));
 
-  staticElements.forEach((element, index) => {
+  const staticElements = [
+    qs("h1"),
+    qs("nav"),
+    qs(".side-card-left"),
+    qs(".side-card-right"),
+  ].filter(Boolean);
+  const cards = qsa(".feed .card");
+
+  const animateStaticElement = (element, delayMs) => {
+    const isNav = element.tagName === "NAV";
+
     element.style.opacity = "0";
-    if (element.tagName === "NAV") {
-      element.style.transition = "opacity 0.9s ease-out";
-    } else {
+    element.style.transition = isNav
+      ? "opacity 0.9s ease-out"
+      : "opacity 0.9s ease-out, transform 0.9s ease-out";
+
+    if (!isNav) {
       element.style.transform = "translateY(24px)";
-      element.style.transition = "opacity 0.9s ease-out, transform 0.9s ease-out";
     }
 
     setTimeout(() => {
       element.style.opacity = "1";
-      if (element.tagName !== "NAV") {
-        element.style.transform = "translateY(0)";
-        setTimeout(() => {
-          element.style.removeProperty("transform");
-        }, 900);
-      }
-    }, 180 + index * 120);
-  });
+      if (isNav) return;
 
-  cards.forEach((card) => {
-    card.classList.add("is-hidden");
-  });
+      element.style.transform = "translateY(0)";
+      setTimeout(() => {
+        element.style.removeProperty("transform");
+      }, 900);
+    }, delayMs);
+  };
 
   const revealCard = (card) => {
     card.classList.add("is-visible");
     card.classList.remove("is-hidden");
   };
 
+  staticElements.forEach((element, index) => {
+    animateStaticElement(element, 180 + index * 120);
+  });
+
+  cards.forEach((card) => card.classList.add("is-hidden"));
+
   if (!("IntersectionObserver" in window)) {
     cards.forEach(revealCard);
     return;
   }
 
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
+  const cardObserver = new IntersectionObserver(
+    (entries, observer) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         revealCard(entry.target);
-        obs.unobserve(entry.target);
+        observer.unobserve(entry.target);
       });
     },
     {
@@ -56,5 +64,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  cards.forEach((card) => observer.observe(card));
+  cards.forEach((card) => cardObserver.observe(card));
 });
