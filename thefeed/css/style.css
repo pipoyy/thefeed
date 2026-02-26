@@ -193,21 +193,30 @@ body {
     left: 24px;
     top: 300px;
     width: 320px;
-    height: 420px;
-    padding: 0;
+    height: auto;
+    padding: 16px;
     overflow: hidden;
     position: fixed;
+    box-sizing: border-box;
 }
 
 .side-card-left .topcorner1 {
     position: absolute;
-    top: -4px;
-    right: -4px;
+    top: 8px;
+    right: 8px;
     width: 80px;
     height: auto;
     margin: 0;
     z-index: 2;
 }
+
+.side-card-left .content {
+    padding-right: 92px;
+    position: relative;
+    z-index: 1;
+}
+
+
 
 .side-card h2 {
     margin: 0 0 10px;
