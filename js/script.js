@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setTimeout(() => {
         window.location.assign(pikachuLink.href);
-      }, 4620);
+      }, 3220);
     });
   }
 
