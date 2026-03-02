@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const qs = (selector) => document.querySelector(selector);
 
+  // defining variables to html tags and css variables
   const heading = qs("h1, h2");
   const logo = qs(".logo");
   const tapIndicator = qs(".arrow");
@@ -68,9 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       document.body.classList.add("is-pikachu-exit");
 
-      setTimeout(() => {
-        window.location.assign(pikachuLink.href);
-      }, 3220);
+      const goToFeed = () => window.location.assign(pikachuLink.href);
+      if (logo) {
+        logo.addEventListener("animationend", goToFeed, {once: true})
+      } else {
+        goToFeed();
+      }
     });
   }
 

@@ -21,6 +21,7 @@
     </head>
 
     <body>
+        <!-- Pikachu: back to splash page! -->
         <h1>Back to home!</h1>
 
         <nav>
@@ -34,8 +35,8 @@
         <aside class="side-card side-card-left">
             <div class="content">
                 <h2>Welcome to the feed!</h2>
+                <p>I am Gabe! A current junior who grew up very fond of Pokemon!</p>
                 <p>This is the feed where you will see a daily dose into my digital life.</p>
-                <p>I hope you like it!</p>
             </div>
             <img src="img/pikachufloat.gif" class="topcorner1" alt="">
         </aside>
@@ -45,18 +46,64 @@
             <img src="img/game.png" class="topcorner2" alt="">
         </aside>
 
-        <div class="feed">
-        <article class="card">
-            <video controls autoplay loop playsinline width="300" alt="">
-                <source src="./img/applemusic.mp4" type="video/mp4" alt=""/>
-                Your browser does not support the video tag.
-            </video>
-            <div class="content">
-                <h2>start of my day</h2>
-                <p>i like to get my day started with a good ol song in my playlist, brightside!</p>
-            </div>
-        </article>
+        <aside class="side-card side-card-playlist">
+            <div class="playlist-card">
+                <div class="playlist-row">
+                    <img class="playlist-cover" src="img/mrbrightside.jpg" alt="Playlist cover">
 
+                    <div class="playlist-meta">
+                        <h3 class="playlist-title"> The Killers - Mr. Brightside </h3>
+                        <p class="playlist-sub">MY GO TO SONG!</p>
+
+                        <button class="playlist-btn" id="playlistPlayBtn" type="button">
+                            <span class="playlist-cursor"></span>
+                            <span id="playlistBtnLabel">Play</span>
+                        </button>
+
+                        <div class="playlist-hud">
+                            <span class="playlist-tag">LVL 12</span>
+                            <span class="playlist-tag">HP: ████████░░</span>
+                            <span class="playlist-tag">MODE: LOOP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="playlist-progress-wrap">
+                    <div class="playlist-progress" id="playlistProgress" role="progressbar" aria-label="Song progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <div class="playlist-progress-fill" id="playlistProgressFill"></div>
+                    </div>
+                    <div class="playlist-time">
+                        <span id="playlistTimeCurrent">0:00</span>
+                        <span id="playlistTimeTotal">0:00</span>
+                    </div>
+                </div>
+
+                <audio id="playlistAudio" preload="metadata">
+                    <source src="img/mrbrightside.mp3" type="audio/mp3">
+                </audio>
+            </div>
+        </aside>
+
+        <aside class="side-card side-card-collage">
+            <div class="collage-card">
+                <div class="collage-screen">
+                    <img id="collageimg" alt=""/>
+                </div>
+
+                <h3 class="collage-title"> Digital Memoir </h3>
+                <p class="collage-sub"> Press play!</p>
+
+                <div class="collage-controls">
+                    <button id="playbutton" type="button">
+                        <span class="collage-cursor"></span> Play
+                    </button>
+                    <button id="stopbutton" type="button"> Stop </button>
+                </div>
+            </div>
+        </aside>
+
+        <div class="feed">
+        <!-- Entry 1 -->
         <article class="card">
             <video controls autoplay loop muted playsinline width="300" alt="">
                 <source src="./img/clashroyale.mp4" type="video/mp4" alt=""/>
@@ -68,6 +115,7 @@
             </div>
         </article>
 
+        <!-- Entry 2 -->
         <article class="card card-bereal">
             <img src="./img/pikadance.gif" class="card-corner-gif" alt="">
             <video controls autoplay loop muted playsinline width="300" alt="">
@@ -80,6 +128,7 @@
             </div>
         </article>
 
+        <!-- Entry 3 -->
         <article class="card">
             <video controls autoplay loop muted playsinline width="300" alt=""> 
                 <source src="./img/studyingjapanese.mp4" type="video/mp4" alt=""/>
@@ -91,6 +140,7 @@
             </div>
         </article>
 
+        <!-- Entry 4 -->
         <article class="card">
             <video controls autoplay loop muted playsinline width="300" alt="">
                 <source src="./img/duolingo.mp4" type="video/mp4" alt=""/>
@@ -102,6 +152,7 @@
             </div>
         </article>
 
+        <!-- Entry 5 -->
         <article class="card">
             <video controls autoplay loop muted playsinline width="300" alt="">
                 <source src="./img/underdogsuperbowl.mp4" type="video/mp4" alt=""/>
@@ -113,6 +164,7 @@
             </div>
         </article>
 
+        <!-- Entry 6 -->
         <article class="card">
             <video controls autoplay loop muted playsinline width="300" alt="">
                 <source src="./img/pcnslack.mp4" type="video/mp4" alt=""/>
@@ -123,6 +175,7 @@
             </div>
         </article>
 
+        <!-- Entry 7 -->
         <article class="card roomy-card">
             <div class="rotate-frame">
                 <img src="./img/bereal_pic1.JPG" id="rotate" width="300" alt="bereal pt.2"/>
@@ -132,6 +185,7 @@
             </div>
         </article>
 
+        <!-- Entry 8 -->
         <article class="card">
             <video controls autoplay loop muted playsinline width="300" alt="">
                 <source src="./img/goinghome.mp4" type="video/mp4" alt=""/>
@@ -142,6 +196,7 @@
             </div>
         </article>
 
+        <!-- Entry 9 -->
         <article class="card roomy-card">
             <video class="large-landscape" controls autoplay loop muted playsinline width="300" alt="">
                 <source src="./img/youtube.mp4" type="video/mp4" alt=""/>
@@ -153,6 +208,7 @@
             </div>
         </article>
 
+        <!-- Entry 10 -->
         <article class="card roomy-card">
             <video class="large-landscape" controls autoplay loop muted playsinline width="300" alt="">
                 <source src="./img/canvas.mp4" type="video/mp4" alt=""/>
